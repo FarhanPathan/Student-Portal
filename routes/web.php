@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+
+// This is my Registration Routes... (viewsss)
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register_submit');
+
+// This is combination of both Login and register routes 
+Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
