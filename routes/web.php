@@ -26,3 +26,11 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+// Dashboard route (This is like home page path)
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+
+
+//Profile route (This is editing code)
+Route::get('/profile', 'App\Http\Controllers\DashboardController@profile')->name('profile');
+Route::post('/profile/update', 'App\Http\Controllers\DashboardController@updateProfile')->name('profile.update');

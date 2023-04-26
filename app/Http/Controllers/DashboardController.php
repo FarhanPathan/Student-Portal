@@ -54,3 +54,56 @@ class DashboardController extends Controller
         }
 
     }
+    public function graduation(){
+        if(empty(auth()->user()->id)){
+            return redirect()->route('login');
+        }
+        
+        $student_id = auth()->user()->student_id;
+
+        // Call Finance portal API to check if student has paid all invoices
+        $client = new Client();
+        $response = $client->post('http://localhost:8888/api/check_invoices/' . $student_id);
+
+        if ($response->getStatusCode() == 200) {
+            $invoices = json_decode($response->getBody());
+            $invoices = $invoices->invoices;
+
+            //In invoices if any invoice->status is unpaid then graduation_status is 1 else 2
+            $graduation_status = 2;
+            foreach($invoices as $invoice){
+                if($invoice->status == 'UNPAID'){
+                    $graduation_status = 1;
+                    break;
+                }
+            }
+            
+            return view('graduation', ['invoices' => $invoices, 'graduation_status' => $graduation_status]);
+        } else if($response->getStatusCode() == 404){
+            return view('graduation', ['invoices' => [], 'graduation_status' => 2]);
+        }
+        else {
+            return response()->json(['message' => 'Failed to check invoices'], 400);
+        }
+        
+    }
+
+    public function profile(){
+        if(empty(auth()->user()->id)){
+            return redirect()->route('login');
+        }
+        $student = auth()->user();
+        return view('view_profile', ['student' => $student]);
+    }
+
+    public function updateProfile(Request $request){
+        if(empty(auth()->user()->id)){
+            return redirect()->route('login');
+        }
+        $student = auth()->user();
+        $student->name = $request->name;
+        $student->surname = $request->surname;
+        $student->save();
+        return redirect()->route('profile')->with('success', 'Profile updated successfully');
+    }
+}
