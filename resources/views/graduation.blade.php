@@ -159,6 +159,18 @@ tr:nth-child(even) {
 </head>
 <body>
     //
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="#" class="navbar-brand">Student Portal</a>
+        </div>
+        <div class="navbar-center">
+            <ul class="navbar-links">
+                <li><a href="{{ route('dashboard') }}">Courses</a></li>
+                <li><a href="{{ route('graduation') }}">Graduation</a></li>
+                <li><a href="{{ route('profile') }}">View Profile</a></li>
+            </ul>
+        </div>
+</nav>
 
     //
     <div class="container">

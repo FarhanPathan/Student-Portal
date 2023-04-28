@@ -30,7 +30,9 @@ Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name
 // Dashboard route (This is like home page path)
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
-
 //Profile route (This is editing code)
 Route::get('/profile', 'App\Http\Controllers\DashboardController@profile')->name('profile');
 Route::post('/profile/update', 'App\Http\Controllers\DashboardController@updateProfile')->name('profile.update');
+
+//Graduation route (Code for graduation)
+Route::get('/graduation', 'App\Http\Controllers\DashboardController@graduation')->name('graduation');
