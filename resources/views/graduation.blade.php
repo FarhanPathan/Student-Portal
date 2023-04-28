@@ -170,6 +170,17 @@ tr:nth-child(even) {
                 <li><a href="{{ route('profile') }}">View Profile</a></li>
             </ul>
         </div>
+        <div class="navbar-right">
+        <ul class="navbar-links">
+        <li>
+                <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" style="display:none;"></button>
+                </form>
+                <a href="#" onclick="document.getElementById('logout-form').submit()">Logout</a>
+            </li>
+        </ul>
+        </div>
 </nav>
 
     //
