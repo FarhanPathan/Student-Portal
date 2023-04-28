@@ -158,29 +158,9 @@ tr:nth-child(even) {
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <a href="#" class="navbar-brand">Student Portal</a>
-        </div>
-        <div class="navbar-center">
-            <ul class="navbar-links">
-                <li><a href="{{ route('dashboard') }}">Courses</a></li>
-                <li><a href="{{ route('graduation') }}">Graduation</a></li>
-                <li><a href="{{ route('profile') }}">View Profile</a></li>
-            </ul>
-        </div>
-        <div class="navbar-right">
-        <ul class="navbar-links">
-        <li>
-                <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" style="display:none;"></button>
-                </form>
-                <a href="#" onclick="document.getElementById('logout-form').submit()">Logout</a>
-            </li>
-        </ul>
-        </div>
-    </nav>
+    //
+
+    //
     <div class="container">
         @if(session('success'))
             <div class="alert alert-success">
