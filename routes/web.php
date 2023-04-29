@@ -36,3 +36,6 @@ Route::post('/profile/update', 'App\Http\Controllers\DashboardController@updateP
 
 //Graduation route (Code for graduation)
 Route::get('/graduation', 'App\Http\Controllers\DashboardController@graduation')->name('graduation');
+
+//Enrollment Url
+Route::post('/enroll', 'App\Http\Controllers\DashboardController@enroll')->name('enroll');
